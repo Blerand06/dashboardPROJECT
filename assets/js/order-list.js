@@ -13,9 +13,9 @@ const getOrders = async () => {
                                 <td>${Orders[index].paid}</td>
                                 <td>${Orders[index].status}</td>
                                 <td class="primary d-flex">
-                                <a href="">Edit</a>
+                                <a href="/new-orders">Edit</a>
                                 /
-                                <a href="">Delete</a>
+                                <a href="/orders">Delete</a>
                                 </td>
                                 `;
         tr.innerHTML = trContent;
