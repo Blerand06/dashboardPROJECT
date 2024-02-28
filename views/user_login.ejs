@@ -134,7 +134,7 @@
 
             <!-- Register buttons -->
             <div class="text-center">
-              <p>Not a member? <a href="registerForm">Register</a></p>
+              <p>Not a member? <a href="">Register</a></p>
             </div>
           </form>
         </div>
@@ -165,6 +165,7 @@
             </div>
 
             <p class="text-center">or:</p>
+            <div id="nameError"></div>
 
             <!-- Name input -->
             <div class="form-outline mb-4">
@@ -173,18 +174,21 @@
             </div>
 
             <!-- Username input -->
+            <div id="usernameError"></div>
             <div class="form-outline mb-4">
               <input type="text" id="registerUsername" class="form-control" />
               <label class="form-label" for="registerUsername">Username</label>
             </div>
 
             <!-- Email input -->
+            <div id="emailError"></div>
             <div class="form-outline mb-4">
               <input type="email" id="registerEmail" class="form-control" />
               <label class="form-label" for="registerEmail">Email</label>
             </div>
 
             <!-- Password input -->
+            <div id="passwordError"></div>
             <div class="form-outline mb-4">
               <input
                 type="password"
@@ -192,18 +196,6 @@
                 class="form-control"
               />
               <label class="form-label" for="registerPassword">Password</label>
-            </div>
-
-            <!-- Repeat Password input -->
-            <div class="form-outline mb-4">
-              <input
-                type="password"
-                id="registerRepeatPassword"
-                class="form-control"
-              />
-              <label class="form-label" for="registerRepeatPassword"
-                >Repeat password</label
-              >
             </div>
 
             <!-- Checkbox -->
@@ -223,7 +215,7 @@
 
             <!-- Submit button -->
             <button type="submit" class="btn btn-primary btn-block mb-3">
-              Sign in
+              Sign up
             </button>
           </form>
         </div>
@@ -236,6 +228,8 @@
       type="text/javascript"
       src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 
     <script>
       // -------LOGIN-------
@@ -257,8 +251,16 @@
           const data = await res.json();
           console.log(data);
           if (data.status === "success") {
-            location.assign("/");
-          }
+    Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: 'Login Successful!',
+        timer: 1100, 
+        showConfirmButton: false, 
+    }).then(() => {
+        location.assign("/");
+    });
+}
           if (data.error) {
             const statusdiv = document.getElementById("status_login");
             statusdiv.className = `alert alert-danger`;
@@ -297,9 +299,18 @@
           });
 
           const data = await res.json();
+
           if (data.status === "success") {
-            location.assign("/");
-          }
+    Swal.fire({
+        icon: 'success',
+        title: 'Success!',
+        text: `You're registered!`,
+        timer: 2000, 
+        showConfirmButton: false, 
+    }).then(() => {
+        location.assign("/login");
+    })
+  }
         } catch (err) {
           console.log(err);
         }

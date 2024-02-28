@@ -39,36 +39,46 @@ const getUserList = async (req, res) => {
   }
 };
 
-const updateUser = async (req, res) => {
-  const id = req.params.id;
+const updateUser = (req, res) => {
+  if(!req.body) {
+    return res.status(400).send({message: "Data to update cannot be empty!"})
+  }
 
-  try {
-    const updatedUser = await UserList.findByIdAndUpdate(id, req.body, {
-      new: true,
-    });
+  const id = req.body.id;
+  UserList.findByIdAndUpdate(id, req.body, {new:true}).then((data)=> {
+    if(!data){
+      res.status(404).send({
+        message: `Cannot Update user with ${id}. Maybe user not found.`
+      });
+    } else {
+      res.send({data, status:'success'})
+    }
+  }).catch((error)=> {
+    res.status(500).send({message: "Error Update User Information",status:'fail'})
+  });
+};
 
-    if (!updatedUser) {
-      return res.status(404).json({
-        message: `Cannot update user with id ${id}. User not found.`,
-        success: false,
+const deleteUser = (req, res) => {
+  const id= req.body.id
+
+  UserList.findByIdAndDelete(id).then((data)=>{
+    if(!data){
+      res.status(404).send({
+        message: `Cannot Delete with id: ${id}. Maybe the ID is wrong`
+      ,status:'fail'});
+    } else {
+      res.send({
+        message: 'User was deleted successfully!',status:'success'
       });
     }
-    res.json({
-      message: "User updated successfully",
-      data: updatedUser,
-      success: true,
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      message: "Error updating user information",
-      success: false,
-    });
-  }
-};
+  }).catch((error)=>{
+    res.status(500).send({message: 'Could not delete user with id: ' +  id})
+  })
+}
 
 module.exports = {
   registerUserList,
   getUserList,
-  updateUser,
+  updateUser, 
+  deleteUser
 };

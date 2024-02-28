@@ -9,7 +9,7 @@ const controller = require("../controller/authController");
 router.get("/", requireAuth, services.mainPage);
 router.get("/signup", services.signupPage);
 router.get("/login", services.loginPage);
-router.get("/update-user", requireAuth, services.updateUser);
+router.get("/update-user/:id", requireAuth, services.updateUser);
 router.get("/messages", requireAuth, services.messageRoom);
 router.get(
   "/orders",

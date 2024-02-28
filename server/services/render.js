@@ -1,3 +1,6 @@
+const axios = require('axios')
+const UserList = require("../model/userListModel");
+
 const loginPage = (req, res) => {
   res.render("user_login");
 };
@@ -10,8 +13,14 @@ const mainPage = (req, res) => {
   res.render("index");
 };
 
-const updateUser = (req, res) => {
-  res.render("update_user");
+const updateUser = async(req, res) => {
+  try{
+    const userlist  = await UserList.findById(req.params.id)
+    res.render("update_user",{userlist});
+  }
+  catch(e){
+res.redirect('back')
+  }
 };
 
 const messageRoom = (req, res) => {

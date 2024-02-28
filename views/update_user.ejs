@@ -8,8 +8,8 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0"
     />
-    <link rel="stylesheet" href="css/sidebar.css" />
-    <link rel="stylesheet" href="css/porositereja.css" />
+    <link rel="stylesheet" href="/css/sidebar.css" />
+    <link rel="stylesheet" href="/css/porositereja.css" />
   </head>
 
   <body>
@@ -51,11 +51,10 @@
 
       <main>
         <div class="containers">
-          <header>New User</header>
+          <header>Edit User</header>
 
           <form
-            action="/userlist/update-user/:id"
-            method="put"
+         
             id="userlistForm"
           >
             <div class="form first">
@@ -64,6 +63,7 @@
                   <div class="input-field">
                     <label>Name Surname </label>
                     <input
+                    value="<%= userlist.name %>"
                       type="text"
                       placeholder="Name Surname"
                       required
@@ -75,6 +75,7 @@
                     <label>Username</label>
                     <input
                       type="text"
+                      value="<%= userlist.username %>"
                       placeholder="Username"
                       required
                       name="username"
@@ -84,6 +85,7 @@
                   <div class="input-field">
                     <label>Email</label>
                     <input
+                    value="<%= userlist.email %>"
                       type="email"
                       placeholder="Email"
                       required
@@ -94,6 +96,7 @@
                   <div class="input-field">
                     <label>Phone Number</label>
                     <input
+                    value="<%= userlist.phone %>"
                       type="text"
                       placeholder="Phone Number"
                       required
@@ -104,6 +107,7 @@
                   <div class="input-field">
                     <label>Education</label>
                     <input
+                    value="<%= userlist.education %>"
                       type="text"
                       placeholder="Education"
                       required
@@ -114,6 +118,7 @@
                   <div class="input-field">
                     <label>Address</label>
                     <input
+                    value="<%= userlist.address %>"
                       type="text"
                       placeholder="Address"
                       required
@@ -125,10 +130,8 @@
               </div>
 
               <div class="details ID">
-                <button class="nextBtn" id="saveButton">
-                  <a href="/userlist/update-user/:id"
-                    ><span class="btnText">Save</span></a
-                  >
+                <button class="nextBtn" id="saveButton" type="submit">
+                    <span class="btnText">Save</span>
                   <i class="uil uil-navigator"></i>
                 </button>
               </div>
@@ -140,7 +143,7 @@
       <!--end of main-->
       <div class="right">
         <div class="top">
-          <span class="material-symbols-sharp" id="logout">logout</span>
+            <a href="/auth/logout"><span class="material-symbols-sharp" id="logout">logout</span></a>
           <button id="menu-btn">
             <span class="material-symbols-sharp">menu</span>
           </button>
@@ -154,25 +157,23 @@
               <small class="text-muted"><%= user.role %></small>
             </div>
             <div class="profile-photo">
-              <img src="img/avatar-1.jpeg" alt="" />
+              <img src="/img/avatar-1.jpeg" alt="" />
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <script src="js/main.js"></script>
-    <script src="js/user.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/user.js"></script>
     <script>
       var goToSecondPage = document.getElementById("logout");
       const userlistForm = document.getElementById("userlistForm");
       goToSecondPage.addEventListener("click", function () {
         document.location.href = "login.html";
       });
-      document.getElementById("saveButton").addEventListener("click", () => {
-        window.location.href = "/users";
-      });
-
+   
       // Preventing Page Reload
       userlistForm.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -184,9 +185,10 @@
         const education = document.getElementById("education").value;
         const address = document.getElementById("address").value;
 
-        const res = await fetch("/userlist/update-user/:id", {
+        const res = await fetch(`/userlist/update-userlist`, {
           method: "PUT",
           body: JSON.stringify({
+            id:location.pathname.split('/')[2],
             name,
             username,
             email,
@@ -199,6 +201,16 @@
           },
         });
         const data = await res.json();
+
+        if(data.status==='success'){
+           location.assign('/users')
+         } else {
+          Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: "Error"
+         });
+         }
       });
     </script>
   </body>
