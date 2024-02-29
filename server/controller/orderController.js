@@ -40,4 +40,53 @@ const getOrders = async (req, res) => {
     res.send({ data: [], status: "fail" });
   }
 };
-module.exports = { registerOrder, getOrders };
+
+const updateOrder = (req, res) => {
+  if (!req.body) {
+    return res.status(400).send({ message: "Data to update cannot be empty!" });
+  }
+
+  const id = req.body.id;
+  Order.findByIdAndUpdate(id, req.body, { new: true })
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot update order with id ${id}. Maybe order not found.`,
+          status: "fail",
+        });
+      } else {
+        res.send({ data, status: "success" });
+      }
+    })
+    .catch((error) => {
+      res.status(500).send({
+        message: "Error updating order information",
+        status: "fail",
+      });
+    });
+};
+
+
+const deleteOrder = (req, res) => {
+  const id = req.body.id;
+
+  Order.findByIdAndDelete(id)
+    .then((data) => {
+      if (!data) {
+        res.status(404).send({
+          message: `Cannot Delete with id: ${id}. Maybe the ID is wrong`,
+          status: "fails",
+        });
+      } else {
+        res.send({
+          message: 'Order was deleted successfully!',
+          status: 'success',
+        });
+      }
+    })
+    .catch((error) => {
+      res.status(500).send({ message: 'Could not delete order with id: ' + id });
+    });
+};
+
+module.exports = { registerOrder, getOrders, updateOrder, deleteOrder };

@@ -44,7 +44,7 @@ const getUserList = async () => {
 })
 const data =await res.json()
 
-if(data.status==='success'){
+if(data.status  === 'success'){
   getUserList();
 }
    })

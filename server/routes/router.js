@@ -10,6 +10,7 @@ router.get("/", requireAuth, services.mainPage);
 router.get("/signup", services.signupPage);
 router.get("/login", services.loginPage);
 router.get("/update-user/:id", requireAuth, services.updateUser);
+router.get('/update-order/:id', requireAuth, services.updateOrder)
 router.get("/messages", requireAuth, services.messageRoom);
 router.get(
   "/orders",
@@ -23,6 +24,7 @@ router.get(
   controller.restrict("admin"),
   services.newOrders
 );
+
 router.get("/users", requireAuth, controller.restrict("admin"), services.users);
 router.get(
   "/new-user",

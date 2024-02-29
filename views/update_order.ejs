@@ -40,7 +40,7 @@
             <span class="material-symbols-sharp">mail_outline</span>
             <h3>Messages</h3>
           </a>
-          <a href="/logout">
+          <a href="/login">
             <span class="material-symbols-sharp">logout</span>
             <h3>Logout</h3>
           </a>
@@ -51,87 +51,123 @@
 
       <main>
         <div class="containers">
-          <header>Edit User</header>
+          <header>Edit Order</header>
 
-          <form
-         
-            id="userlistForm"
-          >
+          <form action="/order/update-orders" method="put" id="orderForm">
             <div class="form first">
               <div class="details personal">
                 <div class="fields">
+
                   <div class="input-field">
-                    <label>Name Surname </label>
+                    <label>Order Name</label>
                     <input
-                    value="<%= userlist.name %>"
+                      value = "<%= order.name %>"
                       type="text"
-                      placeholder="Name Surname"
+                      placeholder="Order Name"
                       required
                       name="name"
                       id="name"
                     />
                   </div>
+
                   <div class="input-field">
-                    <label>Username</label>
+                    <label>Description</label>
                     <input
+                      value = "<%= order.description %>" 
                       type="text"
-                      value="<%= userlist.username %>"
-                      placeholder="Username"
+                      placeholder="Description"
                       required
-                      name="username"
-                      id="username"
+                      name="description"
+                      id="description"
                     />
                   </div>
+
                   <div class="input-field">
-                    <label>Email</label>
+                    <label>Price</label>
                     <input
-                    value="<%= userlist.email %>"
-                      type="email"
-                      placeholder="Email"
+                      value = "<%= order.price %>" 
+                      type="number"
+                      placeholder="Price"
+                      name="price"
                       required
-                      name="email"
-                      id="email"
+                      id="price"
                     />
                   </div>
+
                   <div class="input-field">
-                    <label>Phone Number</label>
+                    <label>Reciever Name</label>
                     <input
-                    value="<%= userlist.phone %>"
+                      value = "<%= order.owner %>"
                       type="text"
-                      placeholder="Phone Number"
+                      placeholder="Reciever Name"
                       required
-                      name="phone"
-                      id="phone"
+                      name="owner"
+                      id="owner"
                     />
                   </div>
-                  <div class="input-field">
-                    <label>Education</label>
-                    <input
-                    value="<%= userlist.education %>"
-                      type="text"
-                      placeholder="Education"
-                      required
-                      name="education"
-                      id="education"
-                    />
-                  </div>
+
                   <div class="input-field">
                     <label>Address</label>
                     <input
-                    value="<%= userlist.address %>"
+                      value = "<%= order.address %>" 
                       type="text"
+                      name="address"
                       placeholder="Address"
                       required
-                      name="address"
                       id="address"
                     />
+                  </div>
+
+                  <div class="input-field">
+                    <label>Reciever Phone Number</label>
+                    <input
+                      value = "<%= order.phone %>"
+                      type="tel"
+                      name="phone"
+                      placeholder="Reciever Phone Number"
+                      required
+                      id="phone"
+                    />
+                  </div>
+
+                  <div class="input-field">
+                    <label>Payment</label>
+                    <input
+                      value = "<%= order.paid %>"
+                      type="tel"
+                      name="payment"
+                      placeholder="Payment"
+                      required
+                      id="paid"
+                    />
+                  </div>
+
+                  <div class="input-field">
+                    <label>Payment</label>
+                    <input
+                      value = "<%= order.status %>"
+                      type="tel"
+                      name="status"
+                      placeholder="status"
+                      required
+                      id="status"
+                    />
+                  </div>
+
+                  <div class="input-field">
+                    <label>Offers</label>
+                    <select required name="offer" id="offer">
+                      <option>Offer 1</option>
+                      <option>Offer 2</option>
+                      <option>Offer 3</option>
+                    </select>
                   </div>
                 </div>
               </div>
 
               <div class="details ID">
-                <button class="nextBtn" id="saveButton" type="submit">
-                    <span class="btnText">Save</span>
+                <button class="nextBtn" id="saveButton">
+                    <span class="btnText">Send</span>
                   <i class="uil uil-navigator"></i>
                 </button>
               </div>
@@ -142,8 +178,7 @@
 
       <!--end of main-->
       <div class="right">
-        <div class="top">
-            <a href="/auth/logout"><span class="material-symbols-sharp" id="logout">logout</span></a>
+        <div class="top"><a href="/auth/logout"><span class="material-symbols-sharp" id="logout">logout</span></a>      
           <button id="menu-btn">
             <span class="material-symbols-sharp">menu</span>
           </button>
@@ -165,35 +200,45 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="/js/order-list.js"></script>
     <script src="/js/main.js"></script>
-    <script src="/js/user.js"></script>
     <script>
       var goToSecondPage = document.getElementById("logout");
-      const userlistForm = document.getElementById("userlistForm");
+      const orderForm = document.getElementById("orderForm");
       goToSecondPage.addEventListener("click", function () {
         document.location.href = "login.html";
       });
-   
+      document.getElementById("saveButton").addEventListener("click", () => {
+        window.location.href = "/orders";
+      });
+
       // Preventing Page Reload
-      userlistForm.addEventListener("submit", async (e) => {
+      orderForm.addEventListener("submit", async (e) => {
         e.preventDefault();
         const name = document.getElementById("name").value;
-        const username = document.getElementById("username").value;
-        const email = document.getElementById("email").value;
-        const phone = document.getElementById("phone").value;
-        const education = document.getElementById("education").value;
+        const description = document.getElementById("description").value;
+        const price = document.getElementById("price").value;
+        const owner = document.getElementById("owner").value;
         const address = document.getElementById("address").value;
+        const phone = document.getElementById("phone").value;
+        const offer = document.getElementById("offer").value;
+        const paid = document.getElementById("paid").value;
+        const status = document.getElementById("status").value;
 
-        const res = await fetch(`/userlist/update-userlist`, {
+
+        const res = await fetch("/order/update-orders", {
           method: "PUT",
           body: JSON.stringify({
-            id:location.pathname.split('/')[2],
+            id: location.pathname.split('/')[2],
             name,
-            username,
-            email,
-            phone,
-            education,
+            description,
+            price,
+            owner,
             address,
+            phone,
+            offer,
+            paid,
+            status
           }),
           headers: {
             "Content-Type": "application/json",
@@ -201,15 +246,15 @@
         });
         const data = await res.json();
 
-        if(data.status==='success'){
-           location.assign('/users')
-         } else {
+        if(data.status === 'success') {
+          location.assign('/orders')
+        } else {
           Swal.fire({
           icon: 'error',
           title: 'Oops...',
           text: "Error"
-         });
-         }
+         });  
+        }
       });
     </script>
   </body>

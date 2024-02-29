@@ -1,6 +1,14 @@
 const User = require("../model/userModel");
 const jwt = require("jsonwebtoken");
-
+const handleErrors =(err)=>{
+  let errors={}
+for( let key in err.errors){
+  if(err.errors[key]){
+    errors[key]=err.errors[key].message
+  }
+}
+return errors
+}
 const maxAge = 10 * 30 * 24 * 60 * 60;
 const createToken = (id) => {
   return jwt.sign(
@@ -15,18 +23,21 @@ const createToken = (id) => {
 };
 
 const register = async (req, res) => {
-  const { name, username, email, password, check } = req.body;
+  const { name, username, email, password } = req.body;
 
   try {
-    const user = await User.create({ name, username, email, password, check });
+    const user = await User.create({ name, username, email, password });
     const token = createToken(user._id);
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
     res.status(201).json({ user: user._id, status: "success" });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({
+  } catch (error) {
+    const errors = handleErrors(error)
+    console.error(error.errors);
+    res.status(500).json({ 
+      status: "failure",
+      errors,
       message:
-        err.message || "Some error occurred while creating a create operation!",
+        error.message || "Some error occurred while creating a create operation!",
     });
   }
 };
@@ -64,7 +75,7 @@ const logout = async (req, res) => {
     console.log(error);
     res
       .status(401)
-      .json({ status: "failure", error: "Incorrect email or password" });
+      .json({ status: "failure", error: "There has been a problem with logging out!" });
   }
 };
 module.exports = { register, login, logout, restrict };

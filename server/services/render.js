@@ -1,5 +1,5 @@
-const axios = require('axios')
 const UserList = require("../model/userListModel");
+const Order = require('../model/orderModel')
 
 const loginPage = (req, res) => {
   res.render("user_login");
@@ -17,11 +17,19 @@ const updateUser = async(req, res) => {
   try{
     const userlist  = await UserList.findById(req.params.id)
     res.render("update_user",{userlist});
-  }
-  catch(e){
-res.redirect('back')
+  } catch(e){
+    res.redirect('back')
   }
 };
+
+const updateOrder = async(req, res)=> {
+  try {
+    const order = await Order.findById(req.params.id)
+    res.render('update_order', {order})
+  } catch (error) {
+    res.redirect('back')
+  }
+}
 
 const messageRoom = (req, res) => {
   res.render("message_room");
@@ -54,4 +62,5 @@ module.exports = {
   users,
   newUser,
   updateUser,
+  updateOrder
 };
