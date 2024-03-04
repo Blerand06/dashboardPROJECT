@@ -58,7 +58,7 @@
               <div class="details personal">
                 <div class="fields">
                   <div class="input-field">
-                    <label>Name Surname </label>
+                    <label>Name Surname</label>
                     <input
                       type="text"
                       placeholder="Name Surname"
@@ -85,6 +85,16 @@
                       required
                       name="email"
                       id="email"
+                    />
+                  </div>
+                  <div class="input-field">
+                    <label>Password</label>
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      required
+                      name="password"
+                      id="password"
                     />
                   </div>
                   <div class="input-field">
@@ -176,6 +186,7 @@
 
         const username = document.getElementById("username").value;
         const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
         const phone = document.getElementById("phone").value;
         const education = document.getElementById("education").value;
         const address = document.getElementById("address").value;
@@ -186,6 +197,7 @@
             name,
             username,
             email,
+            password,
             phone,
             education,
             address,

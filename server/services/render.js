@@ -1,5 +1,5 @@
-const UserList = require("../model/userListModel");
 const Order = require('../model/orderModel')
+const User = require('../model/userModel')
 
 const loginPage = (req, res) => {
   res.render("user_login");
@@ -15,7 +15,7 @@ const mainPage = (req, res) => {
 
 const updateUser = async(req, res) => {
   try{
-    const userlist  = await UserList.findById(req.params.id)
+    const userlist  = await User.findById(req.params.id)
     res.render("update_user",{userlist});
   } catch(e){
     res.redirect('back')

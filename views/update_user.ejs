@@ -94,6 +94,15 @@
                     />
                   </div>
                   <div class="input-field">
+                    <label>Password</label>
+                    <input
+                    placeholder="*******"
+                      type="password"
+                      name="password"
+                      id="password"
+                    />
+                  </div>
+                  <div class="input-field">
                     <label>Phone Number</label>
                     <input
                     value="<%= userlist.phone %>"
@@ -118,7 +127,7 @@
                   <div class="input-field">
                     <label>Address</label>
                     <input
-                    value="<%= userlist.address %>"
+                    value="<%= user.address %>"
                       type="text"
                       placeholder="Address"
                       required
@@ -180,6 +189,7 @@
         const name = document.getElementById("name").value;
         const username = document.getElementById("username").value;
         const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
         const phone = document.getElementById("phone").value;
         const education = document.getElementById("education").value;
         const address = document.getElementById("address").value;
@@ -191,6 +201,7 @@
             name,
             username,
             email,
+            password,
             phone,
             education,
             address,
@@ -201,7 +212,7 @@
         });
         const data = await res.json();
 
-        if(data.status==='success'){
+        if(data.status === 'success'){
            location.assign('/users')
          } else {
           Swal.fire({
