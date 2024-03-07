@@ -21,6 +21,7 @@ const registerOrder = async (req, res) => {
       offer,
       paid,
       order_number,
+      user: req.user._id
     });
     res.status(201).json({ user: user._id, status: "success" });
   } catch (err) {
@@ -34,7 +35,7 @@ const registerOrder = async (req, res) => {
 
 const getOrders = async (req, res) => {
   try {
-    const orders = await Order.find();
+    const orders = await Order.find({ user:req.user._id }).populate('user');
     res.send({ data: orders, status: "success" });
   } catch (e) {
     res.send({ data: [], status: "fail" });

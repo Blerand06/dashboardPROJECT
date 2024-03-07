@@ -5,7 +5,6 @@ const getOrders = async () => {
     if (data.status === "success") {
       document.querySelector("table tbody").innerHTML=''
       let Orders = data.data;
-      // console.log(data.data[0]);
       for (let index = 0; index < Orders.length; index++) {
         const tr = document.createElement("tr");
         const trContent = `
