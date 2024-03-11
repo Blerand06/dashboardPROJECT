@@ -53,17 +53,14 @@
         <div class="containers">
           <header>Edit User</header>
 
-          <form
-         
-            id="userlistForm"
-          >
+          <form id="userlistForm">
             <div class="form first">
               <div class="details personal">
                 <div class="fields">
                   <div class="input-field">
                     <label>Name Surname </label>
                     <input
-                    value="<%= userlist.name %>"
+                      value="<%= userlist.name %>"
                       type="text"
                       placeholder="Name Surname"
                       name="name"
@@ -83,7 +80,7 @@
                   <div class="input-field">
                     <label>Email</label>
                     <input
-                    value="<%= userlist.email %>"
+                      value="<%= userlist.email %>"
                       type="email"
                       placeholder="Email"
                       name="email"
@@ -93,7 +90,7 @@
                   <div class="input-field">
                     <label>Password</label>
                     <input
-                    placeholder="*******"
+                      placeholder="*******"
                       type="password"
                       name="password"
                       id="password"
@@ -102,7 +99,7 @@
                   <div class="input-field">
                     <label>Phone Number</label>
                     <input
-                    value="<%= userlist.phone %>"
+                      value="<%= userlist.phone %>"
                       type="text"
                       placeholder="Phone Number"
                       name="phone"
@@ -112,7 +109,7 @@
                   <div class="input-field">
                     <label>Education</label>
                     <input
-                    value="<%= userlist.education %>"
+                      value="<%= userlist.education %>"
                       type="text"
                       placeholder="Education"
                       name="education"
@@ -122,7 +119,7 @@
                   <div class="input-field">
                     <label>Address</label>
                     <input
-                    value="<%= user.address %>"
+                      value="<%= user.address %>"
                       type="text"
                       placeholder="Address"
                       name="address"
@@ -134,7 +131,7 @@
 
               <div class="details ID">
                 <button class="nextBtn" id="saveButton" type="submit">
-                    <span class="btnText">Save</span>
+                  <span class="btnText">Save</span>
                   <i class="uil uil-navigator"></i>
                 </button>
               </div>
@@ -146,7 +143,9 @@
       <!--end of main-->
       <div class="right">
         <div class="top">
-            <a href="/auth/logout"><span class="material-symbols-sharp" id="logout">logout</span></a>
+          <a href="/auth/logout"
+            ><span class="material-symbols-sharp" id="logout">logout</span></a
+          >
           <button id="menu-btn">
             <span class="material-symbols-sharp">menu</span>
           </button>
@@ -171,27 +170,27 @@
     <script src="/js/main.js"></script>
     <script src="/js/user.js"></script>
     <script>
-      var goToSecondPage = document.getElementById("logout");
-      const userlistForm = document.getElementById("userlistForm");
-      goToSecondPage.addEventListener("click", function () {
-        document.location.href = "login.html";
+      var goToSecondPage = document.getElementById('logout');
+      const userlistForm = document.getElementById('userlistForm');
+      goToSecondPage.addEventListener('click', function () {
+        document.location.href = 'login.html';
       });
-   
+
       // Preventing Page Reload
-      userlistForm.addEventListener("submit", async (e) => {
+      userlistForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const name = document.getElementById("name").value;
-        const username = document.getElementById("username").value;
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-        const phone = document.getElementById("phone").value;
-        const education = document.getElementById("education").value;
-        const address = document.getElementById("address").value;
+        const name = document.getElementById('name').value;
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const phone = document.getElementById('phone').value;
+        const education = document.getElementById('education').value;
+        const address = document.getElementById('address').value;
 
         const res = await fetch(`/userlist/update-userlist`, {
-          method: "PUT",
+          method: 'PUT',
           body: JSON.stringify({
-            id:location.pathname.split('/')[2],
+            id: location.pathname.split('/')[2],
             name,
             username,
             email,
@@ -201,20 +200,20 @@
             address,
           }),
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         });
         const data = await res.json();
 
-        if(data.status === 'success'){
-           location.assign('/users')
-         } else {
+        if (data.status === 'success') {
+          location.assign('/users');
+        } else {
           Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: "Error"
-         });
-         }
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Error',
+          });
+        }
       });
     </script>
   </body>

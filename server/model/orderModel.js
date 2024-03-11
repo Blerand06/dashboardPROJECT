@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema(
   {
@@ -41,9 +41,9 @@ const orderSchema = new mongoose.Schema(
     status: {
       type: String,
       required: true,
-      default: "Pending",
+      default: 'Pending',
     },
-    user:{
+    user: {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
     },
@@ -51,6 +51,6 @@ const orderSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Order = mongoose.model("Order", orderSchema);
+const Order = mongoose.model('Order', orderSchema);
 
 module.exports = Order;

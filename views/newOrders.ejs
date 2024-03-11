@@ -145,7 +145,10 @@
 
       <!--end of main-->
       <div class="right">
-        <div class="top"><a href="/auth/logout"><span class="material-symbols-sharp" id="logout">logout</span></a>      
+        <div class="top">
+          <a href="/auth/logout"
+            ><span class="material-symbols-sharp" id="logout">logout</span></a
+          >
           <button id="menu-btn">
             <span class="material-symbols-sharp">menu</span>
           </button>
@@ -169,28 +172,28 @@
     <script src="js/order-list.js"></script>
     <script src="js/main.js"></script>
     <script>
-      var goToSecondPage = document.getElementById("logout");
-      const orderForm = document.getElementById("orderForm");
-      goToSecondPage.addEventListener("click", function () {
-        document.location.href = "login.html";
+      var goToSecondPage = document.getElementById('logout');
+      const orderForm = document.getElementById('orderForm');
+      goToSecondPage.addEventListener('click', function () {
+        document.location.href = 'login.html';
       });
-      document.getElementById("saveButton").addEventListener("click", () => {
-        window.location.href = "/orders";
+      document.getElementById('saveButton').addEventListener('click', () => {
+        window.location.href = '/orders';
       });
 
       // Preventing Page Reload
-      orderForm.addEventListener("submit", async (e) => {
+      orderForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const name = document.getElementById("name").value;
-        const description = document.getElementById("description").value;
-        const price = document.getElementById("price").value;
-        const owner = document.getElementById("owner").value;
-        const address = document.getElementById("address").value;
-        const phone = document.getElementById("phone").value;
-        const offer = document.getElementById("offer").value;
+        const name = document.getElementById('name').value;
+        const description = document.getElementById('description').value;
+        const price = document.getElementById('price').value;
+        const owner = document.getElementById('owner').value;
+        const address = document.getElementById('address').value;
+        const phone = document.getElementById('phone').value;
+        const offer = document.getElementById('offer').value;
 
-        const res = await fetch("/order/add-order", {
-          method: "POST",
+        const res = await fetch('/order/add-order', {
+          method: 'POST',
           body: JSON.stringify({
             name,
             description,
@@ -201,7 +204,7 @@
             offer,
           }),
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         });
         const data = await res.json();

@@ -2,253 +2,305 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login | ThanaDev</title>
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-  <!-- MDB -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
-  <link rel="stylesheet" href="css/login.css" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | ThanaDev</title>
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
 
-<body>
-  <div class="container">
-    <!-- Pills navs -->
-    <div class="main">
-      <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-        <li class="nav-item" role="presentation">
-          <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="true">Login</a>
-        </li>
-        <li class="nav-item" role="presentation">
-          <a id="registerTabLink" class="nav-link" data-mdb-toggle="pill" href="#pills-register" role="tab" aria-controls="pills-register" aria-selected="true">Register</a>
-        </li>
-      </ul>
-    </div>
-    <!-- Pills navs -->
-
-    <!-- Pills content -->
-    <div class="tab-content">
-      <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-        <form id="loginForm">
-          <div class="text-center mb-3">
-            <p>Sign in with:</p>
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-facebook-f"></i>
-            </button>
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-google"></i>
-            </button>
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-twitter"></i>
-            </button>
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-github"></i>
-            </button>
-          </div>
-
-          <p class="text-center">or:</p>
-          <div id="status_login"></div>
-
-          <!-- Email input -->
-          <div class="form-outline mb-4">
-            <input type="text" id="email_login" class="form-control" />
-            <label class="form-label" for="email_login">Email or username</label>
-          </div>
-
-          <!-- Password input -->
-          <div class="form-outline mb-4">
-            <input type="password" id="password_login" class="form-control" />
-            <label class="form-label" for="loginPassword">Password</label>
-          </div>
-
-          <!-- 2 column grid layout -->
-          <div class="row mb-4">
-            <div class="col-md-6 d-flex justify-content-center">
-          </div>
-          </div>
-
-          <!-- Submit button -->
-          <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
-
-          <!-- Register buttons -->
-          <div class="text-center">
-            <p>Not a member? <a href="#" onclick="openRegisterTab()">Register</a></p>
-          </div>
-        </form>
+  <body>
+    <div class="container">
+      <!-- Pills navs -->
+      <div class="main">
+        <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link active"
+              id="tab-login"
+              data-mdb-toggle="pill"
+              href="#pills-login"
+              role="tab"
+              aria-controls="pills-login"
+              aria-selected="true"
+              >Login</a
+            >
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              id="registerTabLink"
+              class="nav-link"
+              data-mdb-toggle="pill"
+              href="#pills-register"
+              role="tab"
+              aria-controls="pills-register"
+              aria-selected="true"
+              >Register</a
+            >
+          </li>
+        </ul>
       </div>
-      <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-        <form id="registerForm">
-          <div class="text-center mb-3">
-            <p>Sign up with:</p>
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-facebook-f"></i>
+      <!-- Pills navs -->
+
+      <!-- Pills content -->
+      <div class="tab-content">
+        <div
+          class="tab-pane fade show active"
+          id="pills-login"
+          role="tabpanel"
+          aria-labelledby="tab-login"
+        >
+          <form id="loginForm">
+            <div class="text-center mb-3">
+              <p>Sign in with:</p>
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-facebook-f"></i>
+              </button>
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-google"></i>
+              </button>
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-twitter"></i>
+              </button>
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-github"></i>
+              </button>
+            </div>
+
+            <p class="text-center">or:</p>
+            <div id="status_login"></div>
+
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <input type="text" id="email_login" class="form-control" />
+              <label class="form-label" for="email_login"
+                >Email or username</label
+              >
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+              <input type="password" id="password_login" class="form-control" />
+              <label class="form-label" for="loginPassword">Password</label>
+            </div>
+
+            <!-- 2 column grid layout -->
+            <div class="row mb-4">
+              <div class="col-md-6 d-flex justify-content-center"></div>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">
+              Sign in
             </button>
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-google"></i>
+
+            <!-- Register buttons -->
+            <div class="text-center">
+              <p>
+                Not a member?
+                <a href="#" onclick="openRegisterTab()">Register</a>
+              </p>
+            </div>
+          </form>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="pills-register"
+          role="tabpanel"
+          aria-labelledby="tab-register"
+        >
+          <form id="registerForm">
+            <div class="text-center mb-3">
+              <p>Sign up with:</p>
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-facebook-f"></i>
+              </button>
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-google"></i>
+              </button>
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-twitter"></i>
+              </button>
+              <button type="button" class="btn btn-primary btn-floating mx-1">
+                <i class="fab fa-github"></i>
+              </button>
+            </div>
+
+            <p class="text-center">or:</p>
+            <div id="nameError"></div>
+
+            <!-- Name input -->
+            <p id="name-error" class="show-error text-danger mb-0"></p>
+            <div class="form-outline mb-4">
+              <input type="text" id="registerName" class="form-control" />
+              <label class="form-label" for="registerName">Name</label>
+            </div>
+
+            <!-- Username input -->
+            <p id="username-error" class="show-error text-danger mb-0"></p>
+            <div id="usernameError"></div>
+            <div class="form-outline mb-4">
+              <input type="text" id="registerUsername" class="form-control" />
+              <label class="form-label" for="registerUsername">Username</label>
+            </div>
+
+            <!-- Email input -->
+            <p id="email-error" class="show-error text-danger mb-0"></p>
+            <div id="emailError"></div>
+            <div class="form-outline mb-4">
+              <input type="email" id="registerEmail" class="form-control" />
+              <label class="form-label" for="registerEmail">Email</label>
+            </div>
+
+            <!-- Password input -->
+            <p id="password-error" class="show-error text-danger mb-0"></p>
+            <div id="passwordError"></div>
+            <div class="form-outline mb-4">
+              <input
+                type="password"
+                id="registerPassword"
+                class="form-control"
+              />
+              <label class="form-label" for="registerPassword">Password</label>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-3">
+              Sign up
             </button>
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-twitter"></i>
-            </button>
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-              <i class="fab fa-github"></i>
-            </button>
-          </div>
-
-          <p class="text-center">or:</p>
-          <div id="nameError"></div>
-
-          <!-- Name input -->
-          <p id="name-error" class="show-error text-danger mb-0"></p>
-          <div class="form-outline mb-4">
-            <input type="text" id="registerName" class="form-control" />
-            <label class="form-label" for="registerName">Name</label>
-          </div>
-
-          <!-- Username input -->
-          <p id="username-error" class="show-error text-danger mb-0"></p>
-          <div id="usernameError"></div>
-          <div class="form-outline mb-4">
-            <input type="text" id="registerUsername" class="form-control" />
-            <label class="form-label" for="registerUsername">Username</label>
-          </div>
-
-          <!-- Email input -->
-          <p id="email-error" class="show-error text-danger mb-0"></p>
-          <div id="emailError"></div>
-          <div class="form-outline mb-4">
-            <input type="email" id="registerEmail" class="form-control" />
-            <label class="form-label" for="registerEmail">Email</label>
-          </div>
-
-          <!-- Password input -->
-          <p id="password-error" class="show-error text-danger mb-0"></p>
-          <div id="passwordError"></div>
-          <div class="form-outline mb-4">
-            <input type="password" id="registerPassword" class="form-control" />
-            <label class="form-label" for="registerPassword">Password</label>
-          </div>
-
-          <!-- Submit button -->
-          <button type="submit" class="btn btn-primary btn-block mb-3">Sign up</button>
-        </form>
+          </form>
+        </div>
       </div>
+      <!-- Pills content -->
     </div>
-    <!-- Pills content -->
-  </div>
 
-  <!-- MDB -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!-- MDB -->
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.2.0/mdb.min.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-  <script>
-    function openRegisterTab() {
-    document.getElementById("registerTabLink").click();
-  }
-
-    // -------LOGIN-------
-    const loginForm = document.getElementById("loginForm");
-    loginForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      // Getting the values
-      const email = document.getElementById("email_login").value;
-      const password = document.getElementById("password_login").value;
-
-      try {
-        const res = await fetch("/auth/login", {
-          method: "POST",
-          body: JSON.stringify({ email, password }),
-          headers: { "Content-Type": "application/json" },
-        });
-        const data = await res.json();
-        console.log(data);
-
-        if (data.status === "success") {
-          Swal.fire({
-            icon: 'success',
-            title: 'Success!',
-            text: 'Login Successful!',
-            timer: 1000,
-            showConfirmButton: false,
-          }).then(() => {
-            location.assign("/");
-          });
-        }
-
-        if (data.error) {
-          const statusdiv = document.getElementById("status_login");
-          statusdiv.className = `alert alert-danger`;
-          statusdiv.innerText = data.error;
-        }
-      } catch (error) {
-        console.log(error);
+    <script>
+      function openRegisterTab() {
+        document.getElementById('registerTabLink').click();
       }
-    });
 
-    // -------REGISTER-------
-    const registerForm = document.getElementById("registerForm");
+      // -------LOGIN-------
+      const loginForm = document.getElementById('loginForm');
+      loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-    registerForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
+        // Getting the values
+        const email = document.getElementById('email_login').value;
+        const password = document.getElementById('password_login').value;
 
-      // Getting the given values
-      const registerName = registerForm.registerName.value;
-      const registerUsername = registerForm.registerUsername.value;
-      const registerEmail = registerForm.registerEmail.value;
-      const registerPassword = registerForm.registerPassword.value;
-
-      try {
-        const res = await fetch("/auth/register", {
-          method: "POST",
-          body: JSON.stringify({
-            name: registerName,
-            username: registerUsername,
-            email: registerEmail,
-            password: registerPassword,
-          }),
-          headers: { "Content-Type": "application/json" },
-        });
-
-        const data = await res.json();
-        console.log(data);
-        
-
-        if (data.status === "success" ) {
-          
-          Swal.fire({
-            icon: 'success',
-            title: 'Success!',
-            text: `You're registered!`,
-            timer: 2000,
-            showConfirmButton: false,
-          }).then(() => {
-            location.assign("/login");
+        try {
+          const res = await fetch('/auth/login', {
+            method: 'POST',
+            body: JSON.stringify({ email, password }),
+            headers: { 'Content-Type': 'application/json' },
           });
-        }
+          const data = await res.json();
+          console.log(data);
 
+          if (data.status === 'success') {
+            Swal.fire({
+              icon: 'success',
+              title: 'Success!',
+              text: 'Login Successful!',
+              timer: 1000,
+              showConfirmButton: false,
+            }).then(() => {
+              location.assign('/');
+            });
+          }
 
-        if (data.status === "failure") {
-          const error = document.querySelectorAll('.show-error')
-          for(let i =0;i<error.length;i++){
-            error[i].textContent=''
+          if (data.error) {
+            const statusdiv = document.getElementById('status_login');
+            statusdiv.className = `alert alert-danger`;
+            statusdiv.innerText = data.error;
           }
-          for(let key in data.errors){
-          const p =  document.getElementById(`${key}-error`)
-          if(p){
-            p.textContent= data.errors[key]
-          }
-          }
+        } catch (error) {
+          console.log(error);
         }
-      } catch (err) {
-        console.log(err);
-      }
-    });
-  </script>
-</body>
+      });
+
+      // -------REGISTER-------
+      const registerForm = document.getElementById('registerForm');
+
+      registerForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Getting the given values
+        const registerName = registerForm.registerName.value;
+        const registerUsername = registerForm.registerUsername.value;
+        const registerEmail = registerForm.registerEmail.value;
+        const registerPassword = registerForm.registerPassword.value;
+
+        try {
+          const res = await fetch('/auth/register', {
+            method: 'POST',
+            body: JSON.stringify({
+              name: registerName,
+              username: registerUsername,
+              email: registerEmail,
+              password: registerPassword,
+            }),
+            headers: { 'Content-Type': 'application/json' },
+          });
+
+          const data = await res.json();
+          console.log(data);
+
+          if (data.status === 'success') {
+            Swal.fire({
+              icon: 'success',
+              title: 'Success!',
+              text: `You're registered!`,
+              timer: 2000,
+              showConfirmButton: false,
+            }).then(() => {
+              location.assign('/login');
+            });
+          }
+
+          if (data.status === 'failure') {
+            const error = document.querySelectorAll('.show-error');
+            for (let i = 0; i < error.length; i++) {
+              error[i].textContent = '';
+            }
+            for (let key in data.errors) {
+              const p = document.getElementById(`${key}-error`);
+              if (p) {
+                p.textContent = data.errors[key];
+              }
+            }
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      });
+    </script>
+  </body>
 </html>

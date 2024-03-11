@@ -57,11 +57,10 @@
             <div class="form first">
               <div class="details personal">
                 <div class="fields">
-
                   <div class="input-field">
                     <label>Order Name</label>
                     <input
-                      value = "<%= order.name %>"
+                      value="<%= order.name %>"
                       type="text"
                       placeholder="Order Name"
                       name="name"
@@ -72,7 +71,7 @@
                   <div class="input-field">
                     <label>Description</label>
                     <input
-                      value = "<%= order.description %>" 
+                      value="<%= order.description %>"
                       type="text"
                       placeholder="Description"
                       name="description"
@@ -83,7 +82,7 @@
                   <div class="input-field">
                     <label>Price</label>
                     <input
-                      value = "<%= order.price %>" 
+                      value="<%= order.price %>"
                       type="number"
                       placeholder="Price"
                       name="price"
@@ -94,7 +93,7 @@
                   <div class="input-field">
                     <label>Reciever Name</label>
                     <input
-                      value = "<%= order.owner %>"
+                      value="<%= order.owner %>"
                       type="text"
                       placeholder="Reciever Name"
                       name="owner"
@@ -105,7 +104,7 @@
                   <div class="input-field">
                     <label>Address</label>
                     <input
-                      value = "<%= order.address %>" 
+                      value="<%= order.address %>"
                       type="text"
                       name="address"
                       placeholder="Address"
@@ -116,7 +115,7 @@
                   <div class="input-field">
                     <label>Reciever Phone Number</label>
                     <input
-                      value = "<%= order.phone %>"
+                      value="<%= order.phone %>"
                       type="tel"
                       name="phone"
                       placeholder="Reciever Phone Number"
@@ -127,7 +126,7 @@
                   <div class="input-field">
                     <label>Payment</label>
                     <input
-                      value = "<%= order.paid %>"
+                      value="<%= order.paid %>"
                       type="tel"
                       name="payment"
                       placeholder="Payment"
@@ -138,7 +137,7 @@
                   <div class="input-field">
                     <label>Status</label>
                     <input
-                      value = "<%= order.status %>"
+                      value="<%= order.status %>"
                       type="tel"
                       name="status"
                       placeholder="status"
@@ -159,7 +158,7 @@
 
               <div class="details ID">
                 <button class="nextBtn" id="saveButton">
-                    <span class="btnText">Send</span>
+                  <span class="btnText">Send</span>
                   <i class="uil uil-navigator"></i>
                 </button>
               </div>
@@ -170,7 +169,10 @@
 
       <!--end of main-->
       <div class="right">
-        <div class="top"><a href="/auth/logout"><span class="material-symbols-sharp" id="logout">logout</span></a>      
+        <div class="top">
+          <a href="/auth/logout"
+            ><span class="material-symbols-sharp" id="logout">logout</span></a
+          >
           <button id="menu-btn">
             <span class="material-symbols-sharp">menu</span>
           </button>
@@ -195,31 +197,30 @@
     <script src="/js/order-list.js"></script>
     <script src="/js/main.js"></script>
     <script>
-      var goToSecondPage = document.getElementById("logout");
-      const orderForm = document.getElementById("orderForm");
-      goToSecondPage.addEventListener("click", function () {
-        document.location.href = "login.html";
+      var goToSecondPage = document.getElementById('logout');
+      const orderForm = document.getElementById('orderForm');
+      goToSecondPage.addEventListener('click', function () {
+        document.location.href = 'login.html';
       });
-      document.getElementById("saveButton").addEventListener("click", () => {
-        window.location.href = "/orders";
+      document.getElementById('saveButton').addEventListener('click', () => {
+        window.location.href = '/orders';
       });
 
       // Preventing Page Reload
-      orderForm.addEventListener("submit", async (e) => {
+      orderForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const name = document.getElementById("name").value;
-        const description = document.getElementById("description").value;
-        const price = document.getElementById("price").value;
-        const owner = document.getElementById("owner").value;
-        const address = document.getElementById("address").value;
-        const phone = document.getElementById("phone").value;
-        const offer = document.getElementById("offer").value;
-        const paid = document.getElementById("paid").value;
-        const status = document.getElementById("status").value;
+        const name = document.getElementById('name').value;
+        const description = document.getElementById('description').value;
+        const price = document.getElementById('price').value;
+        const owner = document.getElementById('owner').value;
+        const address = document.getElementById('address').value;
+        const phone = document.getElementById('phone').value;
+        const offer = document.getElementById('offer').value;
+        const paid = document.getElementById('paid').value;
+        const status = document.getElementById('status').value;
 
-
-        const res = await fetch("/order/update-orders", {
-          method: "PUT",
+        const res = await fetch('/order/update-orders', {
+          method: 'PUT',
           body: JSON.stringify({
             id: location.pathname.split('/')[2],
             name,
@@ -230,22 +231,22 @@
             phone,
             offer,
             paid,
-            status
+            status,
           }),
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         });
         const data = await res.json();
 
-        if(data.status === 'success') {
-          location.assign('/orders')
+        if (data.status === 'success') {
+          location.assign('/orders');
         } else {
           Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: "Error"
-         });  
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Error',
+          });
         }
       });
     </script>
