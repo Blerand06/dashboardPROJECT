@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 /*  root variables */
 :root {
@@ -55,7 +55,7 @@ html {
 body {
   width: 100vw;
   height: 100vh;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 0.88rem;
   background: var(--color-background);
   overflow-x: hidden;
@@ -169,7 +169,7 @@ main .first-header form {
   border-radius: 10px;
   align-items: center;
   padding: 0 15px;
-  background-color:var(--color-background) ;
+  background-color: var(--color-background);
 }
 main .first-header form input {
   padding-left: 10px;
@@ -215,21 +215,18 @@ main .first-body-1 .mesagges {
   font-size: 9px;
   color: white;
 }
-.first-line{
+.first-line {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.right-side-chat{
+.right-side-chat {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: end;
 }
-
-
-
 
 main .second {
   height: 80vh;
@@ -267,7 +264,7 @@ main .second-header {
 .second-body-lr {
   display: flex;
 }
-.second-body-lr h3{
+.second-body-lr h3 {
   font-size: 13px;
   font-weight: 500;
 }
@@ -329,7 +326,6 @@ main .second-header {
   justify-content: space-between;
   align-items: center;
   padding: 0 1rem;
-  
 }
 
 .second-down .down-button button {
@@ -384,7 +380,6 @@ main .second-header {
   gap: 2rem;
   text-align: right;
 }
-
 
 /*Media queries*/
 
@@ -474,15 +469,13 @@ main .second-header {
     font-size: 2rem;
   }
 
-
-
   .second-down .down-message {
     text-align: start;
     height: 50px;
     width: 100%;
     padding: 1rem 0 0 1rem;
   }
-  
+
   .second-down .down-message input {
     width: 100%;
     height: 30px;
@@ -507,5 +500,4 @@ main .second-header {
   #logout {
     padding-right: 8rem;
   }
-  
 }

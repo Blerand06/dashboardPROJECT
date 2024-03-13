@@ -60,49 +60,9 @@
                 />
               </form>
             </div>
-            <div class="chat-list">
-              <div class="first-body-1">
-                <!-- <div class="profile-photo">
-                  <img src="img/avatar-1.jpeg" alt="" />
-                </div> -->
-                <div class="text">
-                  <div class="first-line">
-                    <a href=""><h3>Diart Derguti</h3></a>
-                  </div>
-                  <div class="right-side-chat">
-                    <p>diart@gmail.com</p>
-                  </div>
-                </div>
-              </div>
 
-              <div class="first-body-1">
-                <!-- <div class="profile-photo">
-                  <img src="img/avatar-1.jpeg" alt="" />
-                </div> -->
-                <div class="text">
-                  <div class="first-line">
-                    <a href=""><h3>Nyo Berisha</h3></a>
-                  </div>
-                  <div class="right-side-chat">
-                    <p>nyo0ber@gmail.com</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="first-body-1">
-                <!-- <div class="profile-photo">
-                  <img src="img/avatar-1.jpeg" alt="" />
-                </div> -->
-                <div class="text">
-                  <div class="first-line">
-                    <a href=""><h3>Adon Asdon</h3></a>
-                  </div>
-                  <div class="right-side-chat">
-                    <p>adonasdon@gmail.com</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <!-- --- CHAT LIST --- -->
+            <div class="chat-list"></div>
           </div>
           <div class="second">
             <div class="second-header">
@@ -130,7 +90,7 @@
                       <input
                         id="msg"
                         type="text"
-                        name="Mesazhi"
+                        name="message"
                         autocomplete="off"
                         placeholder="Write a Message..."
                         required
@@ -138,8 +98,8 @@
                       <button
                         class="btn"
                         type="submit"
-                        name="dergo"
-                        value="dergo"
+                        name="send"
+                        value="send"
                       >
                         Send
                       </button>
@@ -181,7 +141,12 @@
       </div>
     </div>
 
+    <script src="socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+    </script>
     <script src="js/main.js"></script>
+    <script src="js/chat-user-list.js"></script>
     <script>
       var element = document.getElementById('second-body-up');
       element.scrollTop = element.scrollHeight;

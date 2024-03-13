@@ -1,11 +1,18 @@
 const express = require('express');
 const bodyparser = require('body-parser');
-// const http = require('http');
 const dotenv = require('dotenv');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const http = require('http');
+const socketio = require('socket.io');
 
 const app = express();
+const server = http.createServer(app);
+const io = socketio(server);
+
+io.on('connection', (socket) => {
+  console.log(socket.id);
+});
 
 // Assigning a variable to the MongoDB folder
 const connectDB = require('./server/database/connection');
@@ -41,6 +48,6 @@ app.use('/order', require('./server/routes/orderRoutes'));
 app.use('/userlist', require('./server/routes/userListRoutes'));
 
 // Connecting the PORT
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`You've been connected to PORT: ${PORT}`);
 });
