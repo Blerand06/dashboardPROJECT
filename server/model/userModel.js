@@ -6,11 +6,11 @@ const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, 'Please enter a name!'],
+      required: [true, 'Please enter a name'],
     },
     username: {
       type: String,
-      required: [true, 'Please enter a username!'],
+      required: [true, 'Please enter a username'],
       unique: true,
     },
     email: {
@@ -19,15 +19,12 @@ const userSchema = new mongoose.Schema(
       unique: true,
       validate: {
         validator: isEmail,
-        message: 'Custom error message for invalid email!',
+        message: 'Custom error message for invalid email',
       },
     },
     password: {
       type: String,
-      required: [
-        true,
-        'Please enter a password that is at least 6 characters!',
-      ],
+      required: [true, 'Please enter a password that is at least 6 characters'],
       minlength: [6],
     },
     phone: {

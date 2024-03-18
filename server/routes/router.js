@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const services = require('../services/render');
-const requireAuth = require('../middleware/authMiddleware');
+const { requireAuth } = require('../middleware/authMiddleware');
 const controller = require('../controller/authController');
 
 // Using services (Renders)

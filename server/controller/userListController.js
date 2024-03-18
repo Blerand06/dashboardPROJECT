@@ -36,7 +36,10 @@ const registerUserList = async (req, res) => {
 // GET USER
 const getUserList = async (req, res) => {
   try {
-    const userLists = await User.find();
+    const loggedInUserId = req.user._id;
+    const userLists = await User.find({ _id: { $ne: loggedInUserId } }).select(
+      '-password'
+    );
     res.send({ data: userLists, status: 'success' });
   } catch (error) {
     res.send({ data: [], status: 'fail' });

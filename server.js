@@ -11,7 +11,7 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 io.on('connection', (socket) => {
-  console.log(socket.id);
+  console.log('Connected!');
 });
 
 // Assigning a variable to the MongoDB folder
@@ -20,9 +20,6 @@ const connectDB = require('./server/database/connection');
 // Port configuration via ".env" file with dotenv
 dotenv.config({ path: '.env' });
 const PORT = process.env.PORT || 3002;
-
-// MongoDB connection
-connectDB();
 
 // Setting path to assets for efficiency
 app.use('/css', express.static(path.resolve(__dirname, 'assets/css')));
@@ -46,8 +43,10 @@ app.use('/', require('./server/routes/router'));
 app.use('/auth', require('./server/routes/authRoutes'));
 app.use('/order', require('./server/routes/orderRoutes'));
 app.use('/userlist', require('./server/routes/userListRoutes'));
+app.use('/message', require('./server/routes/messageRoutes'));
 
 // Connecting the PORT
 server.listen(PORT, () => {
+  connectDB();
   console.log(`You've been connected to PORT: ${PORT}`);
 });
